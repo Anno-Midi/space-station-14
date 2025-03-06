@@ -395,24 +395,24 @@ namespace Content.Server.Ghost
         /// <summary>
         /// When the round ends, make all players able to see ghosts.
         /// </summary>
-        public void MakeVisible(bool visible)
-        {
-            var entityQuery = EntityQueryEnumerator<GhostComponent, VisibilityComponent>();
-            while (entityQuery.MoveNext(out var uid, out _, out var vis))
-            {
-                if (visible)
-                {
-                    _visibilitySystem.AddLayer((uid, vis), (int) VisibilityFlags.Normal, false);
-                    _visibilitySystem.RemoveLayer((uid, vis), (int) VisibilityFlags.Ghost, false);
-                }
-                else
-                {
-                    _visibilitySystem.AddLayer((uid, vis), (int) VisibilityFlags.Ghost, false);
-                    _visibilitySystem.RemoveLayer((uid, vis), (int) VisibilityFlags.Normal, false);
-                }
-                _visibilitySystem.RefreshVisibility(uid, visibilityComponent: vis);
-            }
-        }
+//        public void MakeVisible(bool visible)
+//        {
+//            var entityQuery = EntityQueryEnumerator<GhostComponent, VisibilityComponent>();
+//            while (entityQuery.MoveNext(out var uid, out _, out var vis))
+//            {
+//                if (visible)
+//                {
+//                    _visibilitySystem.AddLayer((uid, vis), (int) VisibilityFlags.Normal, false);
+//                    _visibilitySystem.RemoveLayer((uid, vis), (int) VisibilityFlags.Ghost, false);
+//                }
+//                else
+//                {
+//                    _visibilitySystem.AddLayer((uid, vis), (int) VisibilityFlags.Ghost, false);
+//                    _visibilitySystem.RemoveLayer((uid, vis), (int) VisibilityFlags.Normal, false);
+//                }
+//                _visibilitySystem.RefreshVisibility(uid, visibilityComponent: vis);
+//            }
+//        }
 
         public bool DoGhostBooEvent(EntityUid target)
         {
